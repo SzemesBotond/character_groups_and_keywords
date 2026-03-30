@@ -35,7 +35,7 @@ shake_list <- split(shake_characters, shake_characters$playName)
 process_df_powerlaw <- function(df, n_groups = 4, k = 2) {
   
   metrics <- c("numOfScenes", "numOfSpeechActs", "numOfWords",
-               "weightedDegree", "betweenness", "closeness")
+               "weightedDegree", "betweenness", "closeness", "eigenvector")
   
   for (metric in metrics) {
     
@@ -101,6 +101,14 @@ speakers_trag <- speakers %>% filter(Genre != "Comedy")
 
 conncetors_com <- connectors %>% filter(Genre == "Comedy")
 conncetors_trag <- connectors %>% filter(Genre != "Comedy")
+
+#other types
+intermediate <- all_characters_power1 %>%  
+  filter((`P-betweenness` == "P2"|`P-betweenness` == "P3") & (`P-numOfSpeechActs`== "P2"|`P-numOfSpeechActs` == "P3") & (`P-numOfWords`== "P2"| `P-numOfWords`== "P3"))
+
+orator <- all_characters_power1 %>% filter(`P-numOfSpeechActs`!= "P1"& `P-numOfWords`== "P1")
+interactor <- all_characters_power1 %>% filter(`P-numOfSpeechActs`== "P1"& `P-numOfWords`!= "P1")
+
 
 ##  STEP 2 - Get spoken text for each group
 library(rdracor)
