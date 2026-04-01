@@ -217,7 +217,7 @@ ggplot(all_shake, aes(x = speech, y = betweenness_rel_z, label = name)) +
   theme_minimal() +
   labs(
     x = "Speech (mean z-score of normalized numOfWords and numOfSpeechActs)",
-    y = "Betweenness (normalized z-score)",
+    y = "Betweenness (z-score)",
     title = ""
   )
 
@@ -251,7 +251,7 @@ plot_to_save <- ggplot(all_shake, aes(x = speech, y = betweenness_rel_z)) +
   theme_minimal() +
   labs(
     x = "Speech (mean z-score of normalized numOfWords and numOfSpeechActs)",
-    y = "Betweenness (normalized z-score)",
+    y = "Betweenness (z-score)",
     title = ""
   )
 
