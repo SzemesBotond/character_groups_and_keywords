@@ -156,7 +156,7 @@ cognitive_words <- c(
 )
 
 seed_terms <- c("lord", "master", "sir", "madam", "king", "lady")
-hierarchy_words <- c( "king", "qeen", "prince", "princess", "noble", "royal",   
+hierarchy_words <- c( "king", "queen", "prince", "princess", "noble", "royal",   
                       #no duke and eral because of names
                       "lord", "lords", "lordship", "lady", "ladyship", "sir",     
                       "madam","master", "mistress",
