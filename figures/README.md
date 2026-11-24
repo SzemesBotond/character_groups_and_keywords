@@ -1,6 +1,6 @@
 # Figure inventory and reproduction
 
-`paper/` contains the five figures extracted from the manuscript proof. `generated/` is the output folder used by the R scripts. Commands assume the project root is the working directory.
+
 
 | Paper figure | Description | Regeneration |
 | --- | --- | --- |
