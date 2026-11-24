@@ -1,0 +1,10 @@
+.Rhistory
+.RData
+.Rproj.user/
+renv/library/
+renv/staging/
+data/*.rds
+data/keyword-texts/
+data/zeta-input/
+data/zeta-results/
+figures/generated/*.png

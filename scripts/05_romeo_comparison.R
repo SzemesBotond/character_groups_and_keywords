@@ -1,11 +1,22 @@
+# Compare character cluster assignments for Romeo and Juliet.
+# Requires result files from scripts 01 and 04.
+
 library(dplyr)
 library(stringr)
 library(purrr)
 
-#using data from z-scale.R and drama_chargroup_and_keywords.R
-# -------------------------
+group_results <- readRDS(file.path("data", "character-groups-results.rds"))
+cluster_results <- readRDS(file.path("data", "corpus-clustering-results.rds"))
+shake_list_processed_power <- group_results$shake_list_processed_power
+all_shake_independent_clusters <- cluster_results$all_shake_independent_clusters
+all_shake_clustered_by_group <- cluster_results$all_shake_clustered_by_group
+all_shake_independent_clustersQ <- cluster_results$all_shake_independent_clustersQ
+all_shake_clustered_by_groupQ <- cluster_results$all_shake_clustered_by_groupQ
+all_shake_independent_clustersD <- cluster_results$all_shake_independent_clustersD
+all_shake_clustered_by_groupD <- cluster_results$all_shake_clustered_by_groupD
+
+# Compare the play-level and corpus-level cluster assignments.
 # 1. Helper: range-based bins
-# -------------------------
 make_bins <- function(x, n, prefix) {
   rng <- range(x, na.rm = TRUE)
   
@@ -21,9 +32,7 @@ make_bins <- function(x, n, prefix) {
   )
 }
 
-# -------------------------
 # 2. Base data (one play)
-# -------------------------
 romeo_base <- shake_list_processed_power[["romeo-and-juliet"]] %>%
   mutate(
     # deciles
@@ -40,9 +49,7 @@ romeo_base <- shake_list_processed_power[["romeo-and-juliet"]] %>%
     )
   )
 
-# -------------------------
 # 3. Select + filter (P1–P3 or Q1–Q3 == just "major" chars)
-# -------------------------
 romeo_filtered <- romeo_base %>%
   select(
     name,
@@ -59,9 +66,7 @@ romeo_filtered <- romeo_base %>%
       str_detect(quartile_betweenness, "Q[1-3]")
   )
 
-# -------------------------
 # 4. Clean labels
-# -------------------------
 romeo_clean <- romeo_filtered %>%
   mutate(
     across(-name, ~ if (is.character(.x)) str_remove_all(.x, "[PQD]") else .x)
@@ -72,9 +77,7 @@ romeo_clean <- romeo_filtered %>%
     power_betweenness = `P-betweenness`
   )
 
-# -------------------------
 # 5. Helper: extract clusters with unique final names
-# -------------------------
 get_clusters <- function(df, play, method = c("quartile", "decile", "kmeans"), scope = c("all", "genre")) {
   method <- match.arg(method)
   scope <- match.arg(scope)
@@ -128,9 +131,7 @@ get_clusters <- function(df, play, method = c("quartile", "decile", "kmeans"), s
   }
 }
 
-# -------------------------
 # 6. Collect all cluster sources
-# -------------------------
 clusters <- list(
   quartile_all   = get_clusters(all_shake_independent_clustersQ, "romeo-and-juliet", "quartile", "all"),
   decile_all     = get_clusters(all_shake_independent_clustersD, "romeo-and-juliet", "decile", "all"),
@@ -140,9 +141,7 @@ clusters <- list(
   kmeans_genre   = get_clusters(all_shake_clustered_by_group,    "romeo-and-juliet", "kmeans", "genre")
 )
 
-# -------------------------
 # 7. Join everything
-# -------------------------
 romeo_groups <- reduce(
   clusters,
   ~ left_join(.x, .y, by = "name"),
@@ -252,3 +251,10 @@ romeo_groups_long <- bind_rows(
   arrange(Character, Metric)
 
 romeo_groups_long
+
+dir.create("results", showWarnings = FALSE)
+write.csv(
+  romeo_groups_long,
+  file.path("results", "romeo-juliet-cluster-comparison.csv"),
+  row.names = FALSE
+)

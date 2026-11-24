@@ -1,0 +1,25 @@
+"Character","Metric","Raw","Power","Q","D","zQ_genre","zD_genre","zK_genre","zQ_all","zD_all","zK_all"
+"Benvolio","Words",1179,4,4,8,4,9,3,4,9,3
+"Benvolio","SpeechAct",63,4,3,7,4,8,2,3,8,2
+"Benvolio","Betweenness",0.046184875351542,4,3,7,4,9,3,4,8,3
+"Capulet","Words",2195,3,3,6,4,8,2,3,8,2
+"Capulet","SpeechAct",50,4,3,7,4,9,3,4,8,3
+"Capulet","Betweenness",0.101057009390343,2,1,3,3,7,2,3,6,2
+"Friar Lawrence","Words",2772,3,2,5,3,7,2,3,7,2
+"Friar Lawrence","SpeechAct",55,4,3,7,4,8,3,3,8,3
+"Friar Lawrence","Betweenness",0.066717908384575,3,2,5,3,8,3,3,7,3
+"Juliet","Words",4350,2,1,1,3,6,2,3,6,1
+"Juliet","SpeechAct",118,3,2,3,3,6,2,3,6,2
+"Juliet","Betweenness",0.0374541207874541,4,3,8,4,9,3,4,8,3
+"Lady Capulet","Words",895,4,4,9,4,9,3,4,9,3
+"Lady Capulet","SpeechAct",45,4,3,8,4,9,3,4,8,3
+"Lady Capulet","Betweenness",0.11332284665618,2,1,2,3,6,2,3,6,2
+"Mercutio","Words",2152,3,3,6,4,8,2,3,8,2
+"Mercutio","SpeechAct",62,4,3,7,4,8,2,3,8,2
+"Mercutio","Betweenness",0.0023642690309357,4,4,10,4,10,4,4,10,4
+"Nurse","Words",2264,3,3,6,3,8,2,3,8,2
+"Nurse","SpeechAct",90,3,2,5,3,7,2,3,7,2
+"Nurse","Betweenness",0.0384807426474093,4,3,7,4,9,3,4,8,3
+"Romeo","Words",4729,1,1,1,2,5,1,2,5,1
+"Romeo","SpeechAct",163,1,1,1,2,4,1,2,4,1
+"Romeo","Betweenness",0.128025048858382,1,1,1,3,6,2,2,5,2

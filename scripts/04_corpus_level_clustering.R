@@ -1,10 +1,21 @@
-# load data from "drama_chargroup_and_keywords.R"
-# Cluster data from a list of dataframes: shake_list 
+# Corpus-level clustering and visualization.
+# Requires data/character-groups-results.rds from script 01.
+
+library(dplyr)
+library(purrr)
+library(ggplot2)
+library(ggrepel)
+
+group_results <- readRDS(file.path("data", "character-groups-results.rds"))
+shake_list <- group_results$shake_list
+shake_meta <- group_results$shake_meta
+
+# Cluster data from a list of dataframes: shake_list.
 # Steps:
 # 1) select columns: title, name, numOfWords, numOfSpeechActs, betweenness
-# 2) normnalize the count-based metrics to length, and z-score all the three 
+# 2) normalize the count-based metrics to length, then z-score all three
 # 3) bind all dataframes into one
-# 4) Clusterization: k-means cluster into 4 clusters, or deciles or quartiles
+# 4) cluster using k-means, quartiles, or deciles
 
 # 1-3) select + normalize within each play + z-score + join metadata
 all_shake <- shake_list %>%
@@ -35,8 +46,7 @@ all_shake <- shake_list %>%
   )
 
 
-# 4) differnt types of clusterization: 
-# with or wo genre separtation, k-means, or based on Q or D rank
+# 4) Cluster by k-means, quartiles, or deciles, with or without genre separation.
 # k-means to cluster 1 to 4/10
 
 ## K-means
@@ -96,8 +106,6 @@ z_speaker_genre <- all_shake_clustered_by_group %>%
 
 
 ## Quartile or Decile (range-based, not rank-based)
-
-library(dplyr)
 
 # Helper: quartiles based on equal value ranges
 quartile_range <- function(x) {
@@ -230,8 +238,6 @@ all_shake <- all_shake %>%
   )
 
 
-library(ggrepel)
-
 plot_to_save <- ggplot(all_shake, aes(x = speech, y = betweenness_rel_z)) +
   geom_point(alpha = 0.4) +
   geom_text_repel(
@@ -255,9 +261,26 @@ plot_to_save <- ggplot(all_shake, aes(x = speech, y = betweenness_rel_z)) +
     title = ""
   )
 
-ggsave( "PATH",
-        plot_to_save,
-        width = 28,
-        height = 28,
-        units = "cm",
-        dpi = 300)
+output_dir <- file.path("figures", "generated")
+dir.create(output_dir, recursive = TRUE, showWarnings = FALSE)
+ggsave(
+  file.path(output_dir, "figure_3_character_positions.png"),
+  plot_to_save,
+  width = 28,
+  height = 28,
+  units = "cm",
+  dpi = 300
+)
+
+saveRDS(
+  list(
+    all_shake = all_shake,
+    all_shake_independent_clusters = all_shake_independent_clusters,
+    all_shake_clustered_by_group = all_shake_clustered_by_group,
+    all_shake_independent_clustersQ = all_shake_independent_clustersQ,
+    all_shake_clustered_by_groupQ = all_shake_clustered_by_groupQ,
+    all_shake_independent_clustersD = all_shake_independent_clustersD,
+    all_shake_clustered_by_groupD = all_shake_clustered_by_groupD
+  ),
+  file.path("data", "corpus-clustering-results.rds")
+)

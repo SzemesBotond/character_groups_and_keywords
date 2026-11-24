@@ -1,9 +1,11 @@
+# Correlations between centrality and verbal prominence.
+# Standalone analysis.
+
 library(rdracor)
 library(dplyr)
 library(purrr)
 library(tidyr)
 library(ggplot2)
-library(forcats)
 
 # Get all plays in ShakeDraCor
 shake_meta <- get_dracor(corpus = "shake")
@@ -103,3 +105,15 @@ plot_to_save <- ggplot(plot_dat,
                       c("#889E19", "pink"))+
   theme_minimal()
 
+
+
+output_dir <- file.path("figures", "generated")
+dir.create(output_dir, recursive = TRUE, showWarnings = FALSE)
+ggsave(
+  file.path(output_dir, "figure_1_centrality_correlations.png"),
+  plot_to_save,
+  width = 18,
+  height = 12,
+  units = "cm",
+  dpi = 300
+)
