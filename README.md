@@ -8,8 +8,7 @@ Centrality: A Typology of Dramatic Characters, *Journal of Computational Literar
 - `scripts/`: numbered analysis stages.
 - `data/`: generated RDS files, pooled texts, and the input corpora prepared for `stylo::oppose()`.
 - `keyword-results/`: keyword lists and Zeta settings supplied with the project.
-- `figures/paper/`: figures extracted from the manuscript proof.
-- `figures/generated/`: figures written by the scripts.
+- `figures/': figures from paper that can be generated using codes from `scripts/`
 - `results/`: generated tables.
 
 Run scripts from the project root. The first three stages write intermediate RDS files so later scripts can be run in a fresh R session.
