@@ -1,6 +1,7 @@
 # Repository for paper Contrasting Verbal Prominence and Network Centrality: A Typology of Dramatic Characters
 
-Code and keyword results for Botond Szemes (2026), *Journal of Computational Literary Studies* 5(1), DOI: 10.48694/jcls.4744.
+Code and keyword results for Botond Szemes (2026), Contrasting Verbal Prominence and Network
+Centrality A Typology of Dramatic Characters, *Journal of Computational Literary Studies* 5(1), DOI: 10.48694/jcls.4744.
 
 ## Project layout
 
