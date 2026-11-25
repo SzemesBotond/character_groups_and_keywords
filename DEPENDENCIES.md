@@ -19,4 +19,3 @@ R 4.1 or later is required (`\` anonymous functions and the native pipe are used
 | `tokenizers` | Sentence and word tokenization |
 | `ggrepel` | Labels in the corpus-level figure |
 
-Exact historical package versions were not recorded in the supplied repository or manuscript. Do not interpret a newly generated `renv.lock` as the original environment unless it is created from the original R library. The manuscript's ShakeDraCor commit is `781dd85`; the live API does not itself pin the returned corpus to that revision.

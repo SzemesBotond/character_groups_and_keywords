@@ -1,6 +1,6 @@
 # Figure inventory and reproduction
 
-`paper/` contains the five figures extracted from the manuscript proof. `generated/` is the output folder used by the R scripts. Commands assume the project root is the working directory.
+
 
 | Paper figure | Description | Regeneration |
 | --- | --- | --- |
@@ -13,4 +13,3 @@
 
 The Zeta script also creates shuffled-text comparisons, marks keywords that recur among the shuffled top 40 or top 100, and includes raw slice counts in the bar labels. It stores the `stylo::oppose()` objects and plot data in `data/zeta-results/zeta-results.rds`.
 
-The images in `paper/` reproduce the published proof. Generated images are new analytical outputs and may vary with data or package versions.

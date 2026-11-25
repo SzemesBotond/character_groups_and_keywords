@@ -1,14 +1,14 @@
 # Repository for paper Contrasting Verbal Prominence and Network Centrality: A Typology of Dramatic Characters
 
-Code and keyword results for Botond Szemes (2026), *Journal of Computational Literary Studies* 5(1), DOI: 10.48694/jcls.4744.
+Code and keyword results for Botond Szemes (2026), Contrasting Verbal Prominence and Network
+Centrality: A Typology of Dramatic Characters, *Journal of Computational Literary Studies* 5(1), DOI: 10.48694/jcls.4744.
 
 ## Project layout
 
 - `scripts/`: numbered analysis stages.
 - `data/`: generated RDS files, pooled texts, and the input corpora prepared for `stylo::oppose()`.
 - `keyword-results/`: keyword lists and Zeta settings supplied with the project.
-- `figures/paper/`: figures extracted from the manuscript proof.
-- `figures/generated/`: figures written by the scripts.
+- `figures/': figures from paper that can be generated using codes from `scripts/`
 - `results/`: generated tables.
 
 Run scripts from the project root. The first three stages write intermediate RDS files so later scripts can be run in a fresh R session.
