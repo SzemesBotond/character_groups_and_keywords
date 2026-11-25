@@ -59,7 +59,7 @@ print(count(all_speech_power1, Comedy_Other, version))
 
 # Normalization: lower-case sentence starts, remove
 # remaining capitalized forms, then collapse whitespace.
-all_speech_power1 <- all_speech_power1 %>%
+all_speech_power2 <- all_speech_power1 %>%
   mutate(
     text = str_replace_all(
       text,
@@ -70,7 +70,7 @@ all_speech_power1 <- all_speech_power1 %>%
     text = str_squish(text)
   )
 
-tidy_speech <- all_speech_power1 %>%
+tidy_speech <- all_speech_power2 %>%
   unnest_tokens(word, text, to_lower = FALSE)
 
 version_texts <- tidy_speech %>%
