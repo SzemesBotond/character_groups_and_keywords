@@ -11,7 +11,7 @@ library(word2vec)
 library(tokenizers)
 
 speech_results <- readRDS(file.path("data", "speech-text-results.rds"))
-all_speech_power1 <- speech_results$all_speech_power1
+all_speech_power1 <- speech_results$speech
 if (is.null(all_speech_power1)) {
   stop(
     "The speech cache does not contain all_speech_power1. ",
